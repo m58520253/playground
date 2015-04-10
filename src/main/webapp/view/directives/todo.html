@@ -1,0 +1,9 @@
+<div>
+
+    <table>
+        <tr ng-repeat="row in rows">
+            <td>{{row.name}}</td>
+            <td><input id="checkSlave" type="checkbox" ng-checked="row.done" ng-model="row.done" ng-change="setTodoStatus(row.id, row.done)"/></td>
+        </tr>
+    </table>
+</div>

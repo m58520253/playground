@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Todo list</title>
+    <script src="lib/bower/angular/angular.js"></script>
+    <script src="js/dataProviders.js"></script>
+    <script src="js/util.module.js"></script>
+    <script src="js/todomodule.js"></script>
+    <link href="css/main-page.css" rel="stylesheet"/>
+    <link href="css/directives/header.css" rel="stylesheet"/>
+    <link href="css/directives/footer.css" rel="stylesheet"/>
+</head>
+<body ng-app="todoModule">
+
+
+
+    <div header></div>
+
+    <div class="todo-list" ng-controller="todoCtrl">
+        Name: {{name}}
+        <todo-input-field zippy-title="foo"></todo-input-field>
+        <todo data=todoRows></todo>
+    </div>
+
+    <div footer></div>
+</body>
+</html>

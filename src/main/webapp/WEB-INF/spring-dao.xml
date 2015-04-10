@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="mongoClient" class="com.mongodb.MongoClient">
+        <constructor-arg type="java.lang.String" name="host" value="localhost"/>
+        <constructor-arg type="int" name="port" value="27017"/>
+    </bean>
+
+
+    <bean id="morphiaFactory" class="pl.embe.todo.model.MorphiaFactory"/>
+
+    <bean id="morphia" factory-bean="morphiaFactory" factory-method="getMorphia"/>
+
+    <bean id="todoDAO" class="pl.embe.todo.model.TodoDAO">
+        <constructor-arg name="morphia" ref="morphia"/>
+        <constructor-arg name="mongo" ref="mongoClient"/>
+        <constructor-arg name="databaseName" value="todolist"/>
+    </bean>
+
+    <bean id="userDAO" class="pl.embe.security.model.UserDAO">
+        <constructor-arg name="morphia" ref="morphia"/>
+        <constructor-arg name="mongo" ref="mongoClient"/>
+        <constructor-arg name="databaseName" value="todolist"/>
+    </bean>
+
+
+
+</beans>
